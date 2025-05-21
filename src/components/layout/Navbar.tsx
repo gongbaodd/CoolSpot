@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Map, Compass } from 'lucide-react';
+import { Menu, X, Map, Compass, UserPlus } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,6 +56,13 @@ const Navbar: React.FC = () => {
             <Map size={18} className="mr-2" />
             Explore Now
           </Link>
+          <Link 
+            to="/host/assessment" 
+            className={`btn ${isScrolled ? 'btn-secondary' : 'bg-white text-blue-800 hover:bg-gray-100'}`}
+          >
+            <UserPlus size={18} className="mr-2" />
+            Become a Host
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -81,10 +88,17 @@ const Navbar: React.FC = () => {
             <MobileNavLink to="/experiences" label="Experiences" />
             <Link
               to="/experiences"
-              className="btn btn-primary w-full justify-center mt-4"
+              className="btn btn-primary w-full justify-center"
             >
               <Map size={18} className="mr-2" />
               Explore Now
+            </Link>
+            <Link
+              to="/host/assessment"
+              className="btn btn-secondary w-full justify-center"
+            >
+              <UserPlus size={18} className="mr-2" />
+              Become a Host
             </Link>
           </div>
         </div>
