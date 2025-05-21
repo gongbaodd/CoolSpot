@@ -105,7 +105,9 @@ const HostOnboardingPage: React.FC = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(completeData),
+        body: JSON.stringify({
+          query: JSON.stringify(completeData),
+        })
       });
 
       const data = await response.json();

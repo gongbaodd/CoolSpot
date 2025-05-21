@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle, ArrowLeft } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
 import Layout from '../components/layout/Layout';
 
-interface HostSuccessPageProps {
-  suggestion?: string;
-}
 
-const HostSuccessPage: React.FC<HostSuccessPageProps> = ({ suggestion }) => {
+const HostSuccessPage: React.FC = () => {
+  const suggestion: string|null = localStorage.getItem('hostSuggestion')
+
   return (
     <Layout>
       <div className="container max-w-3xl py-12">
@@ -23,7 +23,9 @@ const HostSuccessPage: React.FC<HostSuccessPageProps> = ({ suggestion }) => {
           {suggestion && (
             <div className="mb-8 p-6 bg-blue-50 rounded-lg text-left">
               <h2 className="text-xl font-semibold mb-4">Our Suggestions</h2>
-              <div className="prose prose-blue" dangerouslySetInnerHTML={{ __html: suggestion }} />
+              <div className="prose prose-blue">
+                <ReactMarkdown>{suggestion}</ReactMarkdown>
+              </div>
             </div>
           )}
 
