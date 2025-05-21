@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Upload, MapPin, Clock, Users, Camera } from 'lucide-react';
 import Layout from '../components/layout/Layout';
+import { Camera } from 'lucide-react';
 
 interface FormData {
   introduction: string;
@@ -14,22 +14,12 @@ interface FormData {
   uniqueElement: string;
   regenerativeImpact: string;
   requiredItems: string;
-  availability: {
-    days: string[];
-    times: string[];
-  };
+  availability: string;
   accessibility: string;
-  food: {
-    offered: boolean;
-    details: string;
-    dietaryOptions: string[];
-  };
+  food: string;
   partners: string;
   photos: string[];
-  pricing: {
-    amount: number;
-    currency: string;
-  };
+  pricing: string;
   rules: string;
   meetingPoint: string;
   highlights: string;
@@ -47,22 +37,12 @@ const initialFormData: FormData = {
   uniqueElement: '',
   regenerativeImpact: '',
   requiredItems: '',
-  availability: {
-    days: [],
-    times: [],
-  },
+  availability: "",
   accessibility: '',
-  food: {
-    offered: false,
-    details: '',
-    dietaryOptions: [],
-  },
+  food: "",
   partners: '',
   photos: [],
-  pricing: {
-    amount: 0,
-    currency: 'EUR',
-  },
+  pricing: "",
   rules: '',
   meetingPoint: '',
   highlights: '',
@@ -89,7 +69,7 @@ const HostOnboardingPage: React.FC = () => {
     },
     {
       title: 'Logistics & Practicalities',
-      fields: ['requiredItems', 'availability', 'accessibility', 'food', 'partners'],
+      fields: ['requiredItems', 'accessibility', 'food', 'partners'],
     },
     {
       title: 'Media & Presentation',
@@ -101,7 +81,7 @@ const HostOnboardingPage: React.FC = () => {
     },
   ];
 
-  const handleInputChange = (field: string, value: any) => {
+  const handleInputChange = (field: string, value: unknown) => {
     setFormData(prev => ({
       ...prev,
       [field]: value,
@@ -179,7 +159,7 @@ const HostOnboardingPage: React.FC = () => {
                 multiple
                 accept="image/*"
                 className="hidden"
-                onChange={(e) => {
+                onChange={() => {
                   // Handle file upload
                 }}
               />
